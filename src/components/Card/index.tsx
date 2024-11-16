@@ -1,4 +1,4 @@
-import { BellRing, Check } from "lucide-react"
+import { BellRing } from "lucide-react"
 
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,6 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {
     Select,
     SelectContent,
@@ -22,7 +21,6 @@ import {
 
 export function CardWithForm() {
     return (
-        // <Card className="w-[350px]">
         <Card className="w-[500px]">
             <CardHeader>
                 <CardTitle>Create Your Resume</CardTitle>
@@ -31,20 +29,15 @@ export function CardWithForm() {
             <CardContent>
                 <form>
                     <div className="grid w-full items-center gap-4">
-                        {/* <div className="flex flex-col space-y-1.5"> */}
                         <div className="flex flex-row items-center justify-center space-x-1.5">
-                            {/* <Label htmlFor="name">Name</Label> */}
                             <Input id="name" placeholder="Enter your name" />
                             <Input id="name" placeholder="Enter your name" />
                         </div>
-                        {/* <div className="flex flex-col space-y-1.5"> */}
                         <div className="flex flex-row items-center justify-center space-x-1.5">
-                            {/* <Label htmlFor="name">Father Name</Label> */}
                             <Input id="name" placeholder="Enter your father name" />
                             <Input id="name" placeholder="Enter your father name" />
                         </div>
                         <div className="flex flex-col space-y-1.5">
-                            {/* <Label htmlFor="framework">Gender</Label> */}
                             <Select>
                                 <SelectTrigger id="framework">
                                     <SelectValue placeholder="Select your gender" />
