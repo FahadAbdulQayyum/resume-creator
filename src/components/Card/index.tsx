@@ -1,4 +1,5 @@
 import { BellRing } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
 
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
@@ -18,6 +19,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Textarea } from "../ui/textarea"
 
 export function CardWithForm() {
     return (
@@ -31,12 +33,15 @@ export function CardWithForm() {
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-row items-center justify-center space-x-1.5">
                             <Input id="name" placeholder="Enter your name" />
+                            <Separator orientation="vertical" />
                             <Input id="fathername" placeholder="Enter your father name" />
                         </div>
                         <div className="flex flex-row items-center justify-center space-x-1.5">
                             <Input id="country" placeholder="Enter your Country" />
+                            <Separator orientation="vertical" />
                             <Input id="city" placeholder="Enter your City" />
                         </div>
+                        <Textarea placeholder="Type your summary..." />
                         <div className="flex flex-col space-y-1.5">
                             <Select>
                                 <SelectTrigger id="framework">
@@ -67,6 +72,6 @@ export function CardWithForm() {
                 </div>
                 <Switch />
             </div>
-        </Card>
+        </Card >
     )
 }
