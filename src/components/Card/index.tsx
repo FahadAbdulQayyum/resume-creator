@@ -31,11 +31,11 @@ export function CardWithForm() {
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-row items-center justify-center space-x-1.5">
                             <Input id="name" placeholder="Enter your name" />
-                            <Input id="name" placeholder="Enter your name" />
+                            <Input id="fathername" placeholder="Enter your father name" />
                         </div>
                         <div className="flex flex-row items-center justify-center space-x-1.5">
-                            <Input id="name" placeholder="Enter your father name" />
-                            <Input id="name" placeholder="Enter your father name" />
+                            <Input id="country" placeholder="Enter your Country" />
+                            <Input id="city" placeholder="Enter your City" />
                         </div>
                         <div className="flex flex-col space-y-1.5">
                             <Select>
