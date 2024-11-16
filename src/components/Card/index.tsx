@@ -44,14 +44,14 @@ export function CardWithForm() {
                             <Input id="name" placeholder="Enter your father name" />
                         </div>
                         <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="framework">Gender</Label>
+                            {/* <Label htmlFor="framework">Gender</Label> */}
                             <Select>
                                 <SelectTrigger id="framework">
-                                    <SelectValue placeholder="Select" />
+                                    <SelectValue placeholder="Select your gender" />
                                 </SelectTrigger>
                                 <SelectContent position="popper">
-                                    <SelectItem value="next">Male</SelectItem>
-                                    <SelectItem value="nuxt">Female</SelectItem>
+                                    <SelectItem value="male">Male</SelectItem>
+                                    <SelectItem value="female">Female</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
