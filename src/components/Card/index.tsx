@@ -30,15 +30,25 @@ type CardWithFormProps = {
 
 export function CardWithForm({ id, data }: CardWithFormProps) {
     const [dataObj, setDataObj] = useState<any>(data || null);
-    const [dataObjFiltered, setDataObjFiltered] = useState<any>(null);
+    // const [dataObjFiltered, setDataObjFiltered] = useState<any>(data.filter((v: any) => v.id === id) || null);
+    const [dataObjFiltered, setDataObjFiltered] = useState<any>(
+        Array.isArray(data) ? data.filter((v: any) => v.id === id) : null
+    );
+
+    // useEffect(() => {
+    //     // setDataObjFiltered(dataObj.filter((v: any) => v.id === id))
+    //     console.log("Fetched Data:", dataObj);
+    //     console.log("Fetched Data Filtered:", dataObjFiltered);
+    //     // }, []);
+    // }, [dataObj]);
+    // // }, [dataObj, dataObjFiltered]);
 
     useEffect(() => {
-        setDataObjFiltered(dataObj.filter((v: any) => v.id === id))
-        console.log("Fetched Data:", dataObj);
-        console.log("Fetched Data Filtered:", dataObjFiltered);
-        // }, []);
-    }, [dataObj]);
-    // }, [dataObj, dataObjFiltered]);
+        if (Array.isArray(data) && id !== undefined) {
+            const filteredData = data.filter((v: any) => v.id === id);
+            setDataObjFiltered(filteredData.length > 0 ? filteredData[0] : null);
+        }
+    }, [data, id]);
 
     return (
         <Card className="w-[500px]">
@@ -50,18 +60,18 @@ export function CardWithForm({ id, data }: CardWithFormProps) {
                 <form>
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-row items-center justify-center space-x-1.5">
-                            <Input id="name" placeholder="Enter your name" />
+                            <Input id="name" placeholder="Enter your name" value={dataObjFiltered?.name} />
                             <Separator orientation="vertical" />
-                            <Input id="fathername" placeholder="Enter your father name" />
+                            <Input id="fathername" placeholder="Enter your father name" value={dataObjFiltered?.fathername} />
                         </div>
                         <div className="flex flex-row items-center justify-center space-x-1.5">
-                            <Input id="country" placeholder="Enter your Country" />
+                            <Input id="country" placeholder="Enter your Country" value={dataObjFiltered?.country} />
                             <Separator orientation="vertical" />
-                            <Input id="city" placeholder="Enter your City" />
+                            <Input id="city" placeholder="Enter your City" value={dataObjFiltered?.city} />
                         </div>
-                        <Textarea placeholder="Type your summary..." />
+                        <Textarea placeholder="Type your summary..." value={dataObjFiltered?.summary} />
                         <div className="flex flex-col space-y-1.5">
-                            <Select>
+                            <Select value={dataObjFiltered.gender}>
                                 <SelectTrigger id="framework">
                                     <SelectValue placeholder="Select your gender" />
                                 </SelectTrigger>
@@ -84,7 +94,9 @@ export function CardWithForm({ id, data }: CardWithFormProps) {
                     <p className="text-sm font-medium leading-none">Push Notifications</p>
                     <p className="text-sm text-muted-foreground">Send notifications to device.</p>
                 </div>
-                <Switch />
+                <Switch checked={dataObjFiltered.push}
+                // onCheckedChange={handleSwitchChange}
+                />
             </div>
         </Card>
     );
