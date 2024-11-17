@@ -28,19 +28,7 @@ type CardWithFormProps = {
     data: any; // Define a proper type if possible
 };
 
-// export function CardWithForm({ id, data }: CardWithFormProps) {
 export function CardWithForm() {
-    // const [dataObj, setDataObj] = useState<any>(data || null);
-    // const [dataObjFiltered, setDataObjFiltered] = useState<any>(
-    //     Array.isArray(data) ? data.filter((v: any) => v.id === id) : null
-    // );
-
-    // useEffect(() => {
-    //     if (Array.isArray(data) && id !== undefined) {
-    //         const filteredData = data.filter((v: any) => v.id === id);
-    //         setDataObjFiltered(filteredData.length > 0 ? filteredData[0] : null);
-    //     }
-    // }, [data, id]);
 
     return (
         <Card className="w-[500px]">
