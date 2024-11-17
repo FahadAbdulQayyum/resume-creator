@@ -1,4 +1,4 @@
-import { CardWithForm } from '@/components/Card'
+import { CardWithForm } from '@/components/CardSubmit'
 import React from 'react'
 
 const page = () => {
@@ -6,7 +6,7 @@ const page = () => {
     <div
       className="flex justify-center items-center h-screen"
     >
-      {/* <CardWithForm /> */}
+      <CardWithForm />
     </div>
   )
 }
