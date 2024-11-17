@@ -30,18 +30,9 @@ type CardWithFormProps = {
 
 export function CardWithForm({ id, data }: CardWithFormProps) {
     const [dataObj, setDataObj] = useState<any>(data || null);
-    // const [dataObjFiltered, setDataObjFiltered] = useState<any>(data.filter((v: any) => v.id === id) || null);
     const [dataObjFiltered, setDataObjFiltered] = useState<any>(
         Array.isArray(data) ? data.filter((v: any) => v.id === id) : null
     );
-
-    // useEffect(() => {
-    //     // setDataObjFiltered(dataObj.filter((v: any) => v.id === id))
-    //     console.log("Fetched Data:", dataObj);
-    //     console.log("Fetched Data Filtered:", dataObjFiltered);
-    //     // }, []);
-    // }, [dataObj]);
-    // // }, [dataObj, dataObjFiltered]);
 
     useEffect(() => {
         if (Array.isArray(data) && id !== undefined) {
@@ -95,7 +86,6 @@ export function CardWithForm({ id, data }: CardWithFormProps) {
                     <p className="text-sm text-muted-foreground">Send notifications to device.</p>
                 </div>
                 <Switch checked={dataObjFiltered.push}
-                // onCheckedChange={handleSwitchChange}
                 />
             </div>
         </Card>
