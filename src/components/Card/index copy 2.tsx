@@ -1,9 +1,10 @@
-"use client";
+// "use client"
 
-import { BellRing } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
+import { BellRing } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
+
+import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -11,34 +12,40 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "../ui/textarea";
-import { useState, useEffect } from "react";
+} from "@/components/ui/select"
+import { Textarea } from "../ui/textarea"
+// import { useState } from "react"
 
 type CardWithFormProps = {
-    id: number | undefined;
+    idd: number,
     data: any; // Define a proper type if possible
-};
+}
 
-export function CardWithForm({ id, data }: CardWithFormProps) {
-    const [dataObj, setDataObj] = useState<any>(data || null);
-    const [dataObjFiltered, setDataObjFiltered] = useState<any>(null);
+export async function getStaticProps() {
+    const res = await fetch('/Data/data.json');
+    const data = await res.json();
 
-    useEffect(() => {
-        setDataObjFiltered(dataObj.filter((v: any) => v.id === id))
-        console.log("Fetched Data:", dataObj);
-        console.log("Fetched Data Filtered:", dataObjFiltered);
-        // }, []);
-    }, [dataObj]);
-    // }, [dataObj, dataObjFiltered]);
+    return {
+        props: {
+            data,
+        },
+    };
+}
+
+export async function CardWithForm({ idd, data }: CardWithFormProps) {
+
+    // const [dataObj, setDataObj] = useState<any>(data || null);
+
+    const hey = () => console.log('idd, data...', idd, data)
+    hey()
 
     return (
         <Card className="w-[500px]">
@@ -78,14 +85,18 @@ export function CardWithForm({ id, data }: CardWithFormProps) {
                 <Button variant="outline">Cancel</Button>
                 <Button>Submit</Button>
             </CardFooter>
-            <div className="flex items-center space-x-4 rounded-md border p-4">
+            <div className=" flex items-center space-x-4 rounded-md border p-4">
                 <BellRing />
                 <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">Push Notifications</p>
-                    <p className="text-sm text-muted-foreground">Send notifications to device.</p>
+                    <p className="text-sm font-medium leading-none">
+                        Push Notifications
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                        Send notifications to device.
+                    </p>
                 </div>
                 <Switch />
             </div>
         </Card>
-    );
+    )
 }

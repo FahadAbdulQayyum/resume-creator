@@ -6,7 +6,7 @@ const page = () => {
     <div
       className="flex justify-center items-center h-screen"
     >
-      <CardWithForm />
+      {/* <CardWithForm /> */}
     </div>
   )
 }

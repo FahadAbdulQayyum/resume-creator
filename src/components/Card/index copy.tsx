@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-import { BellRing } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
+import { BellRing } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
+
+import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -11,35 +12,57 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "../ui/textarea";
-import { useState, useEffect } from "react";
+} from "@/components/ui/select"
+import { Textarea } from "../ui/textarea"
+import { useState, useEffect } from "react"
 
 type CardWithFormProps = {
-    id: number | undefined;
-    data: any; // Define a proper type if possible
-};
+    idd: number
+}
 
-export function CardWithForm({ id, data }: CardWithFormProps) {
-    const [dataObj, setDataObj] = useState<any>(data || null);
-    const [dataObjFiltered, setDataObjFiltered] = useState<any>(null);
+export async function getStaticProps() {
+    const res = await fetch('/Data/data.json');
+    const data = await res.json();
 
-    useEffect(() => {
-        setDataObjFiltered(dataObj.filter((v: any) => v.id === id))
-        console.log("Fetched Data:", dataObj);
-        console.log("Fetched Data Filtered:", dataObjFiltered);
-        // }, []);
-    }, [dataObj]);
-    // }, [dataObj, dataObjFiltered]);
+    return {
+        props: {
+            data,
+        },
+    };
+}
 
+export async function CardWithForm({ idd }: CardWithFormProps) {
+
+    const [dataObj, setDataObj] = useState();
+    // let iddd = idd
+    // useEffect(() => {
+
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('/Data/data.json');
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! Status: ${response.status}`);
+    //             }
+    //             const data = await response.json();
+    //             const filteredData = data.filter((v: any) => v.id === idd)
+    //             console.log('filteredData...', filteredData)
+    //             setDataObj(data)
+    //             console.log('Data:', data);
+    //         } catch (error) {
+    //             console.error('Failed to fetch data:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, [])
     return (
         <Card className="w-[500px]">
             <CardHeader>
@@ -78,14 +101,18 @@ export function CardWithForm({ id, data }: CardWithFormProps) {
                 <Button variant="outline">Cancel</Button>
                 <Button>Submit</Button>
             </CardFooter>
-            <div className="flex items-center space-x-4 rounded-md border p-4">
+            <div className=" flex items-center space-x-4 rounded-md border p-4">
                 <BellRing />
                 <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">Push Notifications</p>
-                    <p className="text-sm text-muted-foreground">Send notifications to device.</p>
+                    <p className="text-sm font-medium leading-none">
+                        Push Notifications
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                        Send notifications to device.
+                    </p>
                 </div>
                 <Switch />
             </div>
-        </Card>
-    );
+        </Card >
+    )
 }
