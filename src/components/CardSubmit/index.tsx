@@ -53,11 +53,23 @@ export function CardWithForm() {
         console.log("Gender Updated:", genderRef.current);
         console.log("Push Notifications Enabled:", pushNotificationRef.current?.ariaChecked);
 
+        const objData = {
+            name: nameRef.current?.value,
+            fathername: fatherNameRef.current?.value,
+            country: countryRef.current?.value,
+            city: cityRef.current?.value,
+            summary: summaryRef.current?.value,
+            gender: genderRef.current,
+            push: pushNotificationRef.current?.ariaChecked
+        }
+
         // console.log("Name:", nameRef.current?.value);
         // console.log("Father's Name:", fatherNameRef.current?.value);
         // console.log("Country:", countryRef.current?.value);
         // console.log("City:", cityRef.current?.value);
         // console.log("Summary:", summaryRef.current?.value);
+
+        // objData - Continue from here tomorrow
     }
 
     const handleGenderChange = (value: string) => {
