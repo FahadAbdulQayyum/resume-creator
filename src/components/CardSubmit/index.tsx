@@ -69,8 +69,37 @@ export function CardWithForm() {
         // console.log("City:", cityRef.current?.value);
         // console.log("Summary:", summaryRef.current?.value);
 
+        // useEffect(() => {
+        apiFetch(objData)
+        // }, [])
+
         // objData - Continue from here tomorrow
     }
+
+    const apiFetch = async (objData: any) => {
+        try {
+            // const response = await fetch('http://localhost:3000/api/writeData', {
+            const response = await fetch('/api/writeData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(objData),
+            });
+
+            // console.log('response...', response.json())
+            console.log('response...', response)
+
+            if (response.ok) {
+                console.log('Data saved successfully!');
+            } else {
+                console.error('Failed to save data.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
 
     const handleGenderChange = (value: string) => {
         genderRef.current = value; // Update ref when the selection changes
